@@ -1,6 +1,9 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -15,14 +18,13 @@ public class EmployeeController {
         this.employeeService = employeeService;
     }
 
-    // Пример эндпоинта — можно расширить
     @GetMapping
     public List<Employee> getAllEmployees() {
-        return employeeService.getAllEmployees(); // нужно реализовать в сервисе
+        return employeeService.getAllEmployees();
     }
 
     @GetMapping("/add")
-    public Employee getEmployeeCount(@RequestParam String firstName, @RequestParam String lastName) {
+    public Employee addEmployee(@RequestParam String firstName, @RequestParam String lastName) {
         return employeeService.addEmployee(firstName, lastName);
     }
 
@@ -37,8 +39,4 @@ public class EmployeeController {
                                  @RequestParam String lastName) {
         return employeeService.findEmployee(firstName, lastName);
     }
-
-
-
-
 }

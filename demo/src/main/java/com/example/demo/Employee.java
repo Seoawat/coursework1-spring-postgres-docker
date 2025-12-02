@@ -1,6 +1,7 @@
 package com.example.demo;
 
 // Импортируем стандартный утилитарный класс Objects для безопасной работы с null
+
 import java.util.Objects;
 
 public class Employee {
@@ -16,6 +17,7 @@ public class Employee {
     public String getFirstName() {
         return firstName;
     }
+
     public String getLastName() {
         return lastName;
     }

@@ -17,16 +17,24 @@ public class Employee {
     @Column(nullable = false)
     private String lastName;
 
+    @Column(nullable = false)
+    private int salary;
+
+    @Column(nullable = false)
+    private int department;
+
     // Пустой конструктор — ОБЯЗАТЕЛЕН для JPA
     public Employee() {}
 
-    // Твой существующий конструктор
-    public Employee(String firstName, String lastName) {
+    // Основной конструктор — ПОЛНЫЙ
+    public Employee(String firstName, String lastName, int salary, int department) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.salary = salary;
+        this.department = department;
     }
 
-    // Геттеры
+    // ГЕТТЕРЫ
     public Long getId() {
         return id;
     }
@@ -39,7 +47,32 @@ public class Employee {
         return lastName;
     }
 
-    // equals, hashCode, toString — ОСТАВЛЯЕМ БЕЗ ИЗМЕНЕНИЙ!
+    public int getSalary() {
+        return salary;
+    }
+
+    public int getDepartment() {
+        return department;
+    }
+
+    // СЕТТЕРЫ (ОБЯЗАТЕЛЬНЫ для JSON!)
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public void setDepartment(int department) {
+        this.department = department;
+    }
+
+    // equals и hashCode — ТОЛЬКО по ФИО (как и должно быть)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,6 +89,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{firstName='" + firstName + "', lastName='" + lastName + "'}";
+        return "Employee{firstName='" + firstName + "', lastName='" + lastName +
+                "', salary=" + salary + ", department=" + department + '}';
     }
 }
